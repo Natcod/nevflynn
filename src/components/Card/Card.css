@@ -1,0 +1,13 @@
+/* src/components/Layout/Layout.css */
+.layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Arrange sections in a grid */
+    gap: 20px; /* Space between sections */
+    padding: 20px;
+  }
+  
+  /* Optional: Center the layout on the page */
+  .layout {
+    justify-content: center;
+    align-items: center;
+  }
