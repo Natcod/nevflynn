@@ -1,0 +1,53 @@
+.avatar-card {
+  position: relative; /* For positioning the toggle button */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  gap: 1rem; /* Space between children */
+  padding: .2rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.toggle-button {
+  position: absolute; /* Position the button absolutely */
+  top: 1rem; /* Align to the top */
+  right: 1rem; /* Align to the right */
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.toggle-button:hover {
+  background-color: #0056b3;
+}
+.avatar-image {
+  display: flex;
+  justify-content: flex-start; /* Align avatar to the left */
+  width: 100%;
+  margin-top: 1rem; /* Add space below the toggle button */
+}
+.avatar-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 2rem; /* Add space below the toggle button */
+
+}
+
+.description {
+  margin-top: .5rem; /* Space between avatar and description */
+  font-size: 1rem;
+  color: #333;
+}
+.highlight {
+  font-weight: bold; /* Make the text bold */
+  font-size: 1.2em; /* Increase the font size */
+  color: #007bff; /* Optional: Add a color to make it stand out */
+}
