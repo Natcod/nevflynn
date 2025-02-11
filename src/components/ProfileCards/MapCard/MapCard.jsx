@@ -6,7 +6,7 @@ import "./MapCard.css";
 
 // Avatar marker icon
 const avatarIcon = new L.Icon({
-  iconUrl: "/avatar.png", // Path to your avatar image
+  iconUrl: "/avatar.jpg", // Path to your avatar image
   iconSize: [40, 40], // Size of the icon
   iconAnchor: [20, 40], // Point of the icon that corresponds to the marker's location
 });
