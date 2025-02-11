@@ -1,0 +1,16 @@
+.media-section {
+    padding: 32px;
+    background-color: #f9f9f9;
+  }
+  
+  .card-container {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+  }
+  
+  @media (max-width: 768px) {
+    .card-container {
+      flex-direction: column;
+    }
+  }

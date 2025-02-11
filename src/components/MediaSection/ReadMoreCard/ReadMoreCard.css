@@ -1,0 +1,43 @@
+.read-more-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .description {
+    margin-bottom: 16px;
+    color: #666;
+  }
+  
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .read-more-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .read-more-button:hover {
+    background-color: #1e7e34;
+  }
+  
+  .arrow {
+    margin-right: 8px;
+  }
+  
+  .date {
+    font-size: 14px;
+    color: #666;
+  }

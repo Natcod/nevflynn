@@ -1,0 +1,48 @@
+.subscribe-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .subscribe-card p {
+    margin-bottom: 16px;
+    color: #666;
+  }
+  
+  input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .subscribe-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .arrow {
+    margin-right: 8px;
+  }
+  
+  .subscriber-count {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #666;
+  }
