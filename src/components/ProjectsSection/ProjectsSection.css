@@ -1,0 +1,24 @@
+.projects-section {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .projects-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .projects-grid .project-card {
+    flex: 1 1 calc(33.333% - 2rem); /* Three cards per row */
+    max-width: calc(33.333% - 2rem); /* Three cards per row */
+  }
+  
+  /* Responsive layout: Stack cards vertically on smaller screens */
+  @media (max-width: 768px) {
+    .projects-grid .project-card {
+      flex: 1 1 100%; /* Full width on smaller screens */
+      max-width: 100%;
+    }
+  }
