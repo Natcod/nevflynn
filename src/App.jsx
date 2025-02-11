@@ -1,18 +1,30 @@
 import React, { useState } from "react";
 import Navigation from "./components/Navigation/Navigation";
 import ProfileCards from "./components/ProfileCards/ProfileCards";
-
-import "./App.css"; // Global styles (optional)
+import ProjectsSection from "./components/ProjectsSection/ProjectsSection"; // Import ProjectsSection
+// import MediaSection from "./components/MediaSection/MediaSection"; // Import MediaSection
+import "./App.css";
 
 const App = () => {
-  const [activeSection, setActiveSection] = useState("about");
+  const [activeSection, setActiveSection] = useState("all");
 
   return (
     <div className="app">
       <Navigation setActiveSection={setActiveSection} />
       <div className="content">
-        {/* We'll add the sections (About, Projects, Media, All) here later */}
-        <p>Active Section: {activeSection === "about" && <ProfileCards/>}</p>
+        {/* Render all sections when "All" is clicked */}
+        {activeSection === "all" && (
+          <>
+            <ProfileCards />
+            <ProjectsSection />
+            {/* <MediaSection /> */}
+          </>
+        )}
+
+        {/* Render individual sections based on activeSection */}
+        {activeSection === "about" && <ProfileCards />}
+        {activeSection === "projects" && <ProjectsSection />}
+        {/* {activeSection === "media" && <MediaSection />} */}
       </div>
     </div>
   );
