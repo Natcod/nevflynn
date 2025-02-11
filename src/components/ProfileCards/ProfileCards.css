@@ -7,8 +7,9 @@
 }
 
 .avatar-card-container,
-.map-card-container {
-  flex: 1; /* Allow both cards to grow and take equal space */
+.map-card-container,
+.twitter-card-container {
+  flex: 1; /* Allow all cards to grow and take equal space */
   min-width: 300px; /* Minimum width for each card */
   max-width: 400px; /* Maximum width for each card */
 }

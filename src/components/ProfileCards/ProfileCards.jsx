@@ -1,6 +1,7 @@
 import React from "react";
 import AvatarCard from "./AvatarCard/AvatarCard";
-import MapCard from "./MapCard/MapCard"; // Import the MapCard component
+import MapCard from "./MapCard/MapCard";
+import TwitterCard from "./TwitterCard/TwitterCard"; // Import the TwitterCard component
 import "./ProfileCards.css";
 
 const ProfileCards = () => {
@@ -14,6 +15,11 @@ const ProfileCards = () => {
       {/* Map Card */}
       <div className="map-card-container">
         <MapCard />
+      </div>
+
+      {/* Twitter Card */}
+      <div className="twitter-card-container">
+        <TwitterCard />
       </div>
     </div>
   );
