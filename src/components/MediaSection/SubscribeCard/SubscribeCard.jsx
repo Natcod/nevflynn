@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './SubscribeCard.css';
+import { DarkModeContext } from '../../DarkModeContext/DarkModeContext';
 
 const SubscribeCard = () => {
   const [email, setEmail] = useState('');
   const [subscribers, setSubscribers] = useState(100);
+  const { isDarkMode } = useContext(DarkModeContext);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
@@ -14,8 +16,8 @@ const SubscribeCard = () => {
   };
 
   return (
-    <div className="subscribe-card">
-      <p>Stay updated with our latest news!</p>
+    <div className={`subscribe-card ${isDarkMode ? 'dark-mode' : ''}`}>
+      <p> Stay updated with our latest news!</p>
       <form onSubmit={handleSubscribe}>
         <input
           type="email"

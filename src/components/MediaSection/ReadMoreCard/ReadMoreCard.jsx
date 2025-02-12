@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './ReadMoreCard.css';
+import { DarkModeContext } from '../../DarkModeContext/DarkModeContext';
 
 const ReadMoreCard = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="read-more-card">
+       <div className={`read-more-card ${isDarkMode ? 'dark-mode' : ''}`}>
       <p className="description">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt.
+      <strong>How it started vs. how it's going</strong>
+      <p>A short personal history as it relates to design and development, and how I've found value in the cross-section between both disciplines.</p>
       </p>
       <div className="actions">
         <button className="read-more-button">

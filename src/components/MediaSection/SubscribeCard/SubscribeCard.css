@@ -46,3 +46,62 @@
     font-size: 14px;
     color: #666;
   }
+  .subscribe-card.dark-mode {
+    background-color: #444;
+    border-color: #555;
+    color: #ddd;
+  }
+  
+  .subscribe-card input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+  }
+  
+  .subscribe-card.dark-mode input[type="email"] {
+    background-color: #555;
+    color: #ddd;
+    border-color: #666;
+  }
+  
+  .subscribe-card .subscribe-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .subscribe-card.dark-mode .subscribe-button {
+    background-color: #0056b3;
+  }
+  
+  .subscribe-card .subscribe-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .subscribe-card .arrow {
+    margin-right: 8px;
+  }
+  
+  .subscribe-card .subscriber-count {
+    margin-top: 16px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .subscribe-card.dark-mode .subscriber-count .description{
+    color: #ddd;
+  }
+  .subscribe-card.dark-mode .description{
+    color: #ddd;
+  }

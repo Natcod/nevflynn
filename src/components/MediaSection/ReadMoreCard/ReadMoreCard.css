@@ -41,3 +41,57 @@
     font-size: 14px;
     color: #666;
   }
+
+  .read-more-card.dark-mode {
+    background-color: #444;
+    border-color: #555;
+    color: #ddd;
+  }
+  
+  .read-more-card .description {
+    margin-bottom: 16px;
+    color: #666;
+  }
+  
+  .read-more-card.dark-mode .description {
+    color: #ddd;
+  }
+  
+  .read-more-card .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .read-more-card .read-more-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .read-more-card.dark-mode .read-more-button {
+    background-color: #1e7e34;
+  }
+  
+  .read-more-card .read-more-button:hover {
+    background-color: #1e7e34;
+  }
+  
+  .read-more-card .arrow {
+    margin-right: 8px;
+  }
+  
+  .read-more-card .date {
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .read-more-card.dark-mode .date {
+    color: #ddd;
+  }
