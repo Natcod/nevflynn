@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './SpotifyCard.css';
+import { DarkModeContext } from '../../DarkModeContext/DarkModeContext';
 
 const SpotifyCard = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="spotify-card">
+   <div className={`spotify-card ${isDarkMode ? 'dark-mode' : ''}`}>
       <div className="logo-container">
         <img src="/spotify-logo.png" alt="Spotify Logo" className="spotify-logo" />
       </div>

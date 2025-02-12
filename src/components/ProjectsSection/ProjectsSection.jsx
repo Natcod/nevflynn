@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from 'react';
 import ProjectCard from "./ProjectCard/ProjectCard";
 import "./ProjectsSection.css";
+import { DarkModeContext } from '../DarkModeContext/DarkModeContext';
 
 const ProjectsSection = () => {
   const projects = [
@@ -20,9 +21,11 @@ const ProjectsSection = () => {
       isHorizontal: false, // Vertical layout
     },
   ];
-
+  
+  const { isDarkMode } = useContext(DarkModeContext);
+  
   return (
-    <div className="projects-section">
+    <div className={`projects-section ${isDarkMode ? 'dark-mode' : ''}`}>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <ProjectCard

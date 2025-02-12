@@ -51,3 +51,32 @@
   font-size: 1.2em; /* Increase the font size */
   color: #007bff; /* Optional: Add a color to make it stand out */
 }
+.avatar-card {
+  border: 1px solid #585656;
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.avatar-card.dark-mode .description{
+  /* background-color: #444;
+  border-color: #555; */
+  color: #fff;
+}
+.avatar-card.dark-mode .highlight{
+  color: #fff;
+}
+
+.avatar-card img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.avatar-card h3,
+.avatar-card p {
+  margin: 8px 0;
+}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./AvatarCard.css";
 import { motion } from "framer-motion";
+import { DarkModeContext } from '../../DarkModeContext/DarkModeContext';
 
 // Import local avatar images
 import Avatar1 from "/src/assets/avatars/avatar1.jpg";
@@ -19,8 +20,10 @@ const AvatarCard = () => {
     setAvatarIndex((prevIndex) => (prevIndex + 1) % avatars.length);
   };
 
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="avatar-card">
+    <div className={`avatar-card ${isDarkMode ? 'dark-mode' : ''}`}>
       {/* Toggle Button at Top-Right Corner */}
       <button className="toggle-button" onClick={toggleAvatar}>
         Toggle Avatar

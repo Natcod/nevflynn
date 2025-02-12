@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from 'react';
 import "./ProjectCard.css";
+import { DarkModeContext } from '../../DarkModeContext/DarkModeContext';
 
 const ProjectCard = ({ image, link, isHorizontal }) => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div className={`project-card ${isHorizontal ? "horizontal" : "vertical"}`}>
+<div className={`project-card ${isHorizontal ? "horizontal" : "vertical"} ${isDarkMode ? "dark-mode" : ""}`}>
       {/* Project Image */}
       <div className="project-image" style={{ backgroundImage: `url(${image})` }}></div>
 

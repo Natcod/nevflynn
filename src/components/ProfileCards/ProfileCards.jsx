@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useContext } from 'react';
 import AvatarCard from "./AvatarCard/AvatarCard";
 import MapCard from "./MapCard/MapCard";
 import TwitterCard from "./TwitterCard/TwitterCard"; // Import the TwitterCard component
 import "./ProfileCards.css";
+import { DarkModeContext } from '../DarkModeContext/DarkModeContext';
 
 const ProfileCards = () => {
+  const { isDarkMode } = useContext(DarkModeContext);
+
   return (
-    <div className="about-container">
+    <div className={`profile-cards ${isDarkMode ? 'dark-mode' : ''}`}>
+      <div className="about-container">
       {/* Avatar Card */}
       <div className="avatar-card-container">
         <AvatarCard />
@@ -22,6 +26,7 @@ const ProfileCards = () => {
         <TwitterCard />
       </div>
     </div>
+      </div>
   );
 };
 
