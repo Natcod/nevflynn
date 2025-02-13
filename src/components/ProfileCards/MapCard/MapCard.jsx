@@ -1,5 +1,5 @@
-import React, { useRef } from "react";
-import { MapContainer, TileLayer, Marker, useMap } from "react-leaflet";
+import React, { useRef, useState } from "react";
+import { MapContainer, TileLayer, Marker } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css"; // Leaflet CSS
 import "./MapCard.css";
@@ -12,36 +12,28 @@ const avatarIcon = new L.Icon({
 });
 
 const MapCard = () => {
-  const mapRef = useRef(null); // Ref to access the map instance
+  const [mapKey, setMapKey] = useState(Date.now()); // Ensure unique key on re-renders
   const mapCenter = [53.3498, -6.2603]; // Center on Dublin, Ireland
 
   // Function to handle zoom in
   const handleZoomIn = () => {
-    if (mapRef.current) {
-      const currentZoom = mapRef.current.getZoom();
-      mapRef.current.setZoom(currentZoom + 1);
-      mapRef.current.setView(mapCenter, currentZoom + 1); // Lock the center
-    }
+    setMapKey(Date.now()); // Reset map to avoid reuse issue
   };
 
   // Function to handle zoom out
   const handleZoomOut = () => {
-    if (mapRef.current) {
-      const currentZoom = mapRef.current.getZoom();
-      mapRef.current.setZoom(currentZoom - 1);
-      mapRef.current.setView(mapCenter, currentZoom - 1); // Lock the center
-    }
+    setMapKey(Date.now()); // Reset map to avoid reuse issue
   };
 
   return (
     <div className="map-card">
       {/* Leaflet Map */}
       <MapContainer
+        key={mapKey} // Ensure new map instance on re-renders
         center={mapCenter} // Center on Dublin, Ireland
         zoom={12} // Initial zoom level
         scrollWheelZoom={false} // Disable scroll zoom
         dragging={false} // Disable dragging (panning)
-        whenCreated={(map) => (mapRef.current = map)} // Save the map instance
         className="map-container"
       >
         {/* Tile Layer (OpenStreetMap) */}
