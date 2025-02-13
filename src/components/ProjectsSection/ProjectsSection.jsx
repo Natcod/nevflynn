@@ -1,41 +1,33 @@
-import React, { useContext } from 'react';
-import ProjectCard from "./ProjectCard/ProjectCard";
-import "./ProjectsSection.css";
-import { DarkModeContext } from '../DarkModeContext/DarkModeContext';
+import React from 'react';
+import { SortableContext, useSortable } from '@dnd-kit/sortable';
+import { CSS } from '@dnd-kit/utilities';
+import ProjectCard from './ProjectCard/ProjectCard';
+import './ProjectsSection.css';
 
-const ProjectsSection = () => {
-  const projects = [
-    {
-      image: "/public/project1.png", // Path to project 1 image
-      link: "https://example.com/project1", // Link to project 1
-      isHorizontal: true, // First card is horizontal
-    },
-    {
-      image: "/public/project2.png", // Path to project 2 image
-      link: "https://example.com/project2", // Link to project 2
-      isHorizontal: false, // Vertical layout
-    },
-    {
-      image: "/public/project3.png", // Path to project 3 image
-      link: "https://example.com/project3", // Link to project 3
-      isHorizontal: false, // Vertical layout
-    },
-  ];
-  
-  const { isDarkMode } = useContext(DarkModeContext);
-  
+const ProjectsSection = ({ cards }) => {
   return (
-    <div className={`projects-section ${isDarkMode ? 'dark-mode' : ''}`}>
-      <div className="projects-grid">
-        {projects.map((project, index) => (
-          <ProjectCard
-            key={index}
-            image={project.image}
-            link={project.link}
-            isHorizontal={project.isHorizontal}
-          />
+    <div className="projects-section">
+      <SortableContext items={cards.map((card) => card.id)}>
+        {cards.map((card) => (
+          <SortableItem key={card.id} id={card.id}>
+            <ProjectCard {...card} />
+          </SortableItem>
         ))}
-      </div>
+      </SortableContext>
+    </div>
+  );
+};
+
+const SortableItem = ({ id, children }) => {
+  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
+      {children}
     </div>
   );
 };
