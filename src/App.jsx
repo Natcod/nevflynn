@@ -30,11 +30,21 @@ function App() {
         link: 'https://example.com/project2',
         isHorizontal: false,
       },
+      {
+        id: 'project-3',
+        type: 'ProjectCard',
+        image: '/public/project3.png',
+        link: 'https://example.com/project3',
+        isHorizontal: false,
+      },
     ],
     MediaSection: [
       { id: 'spotify-1', type: 'SpotifyCard' },
       { id: 'subscribe-1', type: 'SubscribeCard' },
       { id: 'readmore-1', type: 'ReadMoreCard' },
+    ],
+    NightModeSection: [
+      { id: 'nightmode-1', type: 'NightModeToggleCard' }, // Add the NightModeToggleCard
     ],
   });
 

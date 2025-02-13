@@ -1,16 +1,24 @@
 import React from 'react';
 import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import SpotifyCard from './SpotifyCard/SpotifyCard';
-import SubscribeCard from './SubscribeCard/SubscribeCard';
-import ReadMoreCard from './ReadMoreCard/ReadMoreCard';
+import AvatarCard from '/src/components/ProfileCards/AvatarCard/AvatarCard';
+import MapCard from '/src/components/ProfileCards/MapCard/MapCard';
+import TwitterCard from '/src/components/ProfileCards/TwitterCard/TwitterCard';
+import ProjectCard from '/src/components/ProjectsSection/ProjectCard/ProjectCard';
+import SpotifyCard from '/src/components/MediaSection/SpotifyCard/SpotifyCard';
+import SubscribeCard from '/src/components/MediaSection/SubscribeCard/SubscribeCard';
+import ReadMoreCard from '/src/components/MediaSection/ReadMoreCard/ReadMoreCard';
 import './MediaSection.css';
 
 const MediaSection = ({ cards }) => {
   const cardComponents = {
-    SpotifyCard: SpotifyCard,
-    SubscribeCard: SubscribeCard,
-    ReadMoreCard: ReadMoreCard,
+  AvatarCard: AvatarCard,
+  MapCard: MapCard,
+  TwitterCard: TwitterCard,
+  ProjectCard: ProjectCard,
+  SpotifyCard: SpotifyCard,
+  SubscribeCard: SubscribeCard,
+  ReadMoreCard: ReadMoreCard,
   };
 
   return (

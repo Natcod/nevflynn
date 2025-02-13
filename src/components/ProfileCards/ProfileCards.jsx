@@ -1,10 +1,9 @@
 import React from 'react';
-import { SortableContext, useSortable } from '@dnd-kit/sortable';
-import { CSS } from '@dnd-kit/utilities';
+import { SortableContext } from '@dnd-kit/sortable';
+import SortableItem from '../Utils/SortableItem';
 import AvatarCard from './AvatarCard/AvatarCard';
 import MapCard from './MapCard/MapCard';
 import TwitterCard from './TwitterCard/TwitterCard';
-import './ProfileCards.css';
 
 const ProfileCards = ({ cards }) => {
   const cardComponents = {
@@ -22,20 +21,6 @@ const ProfileCards = ({ cards }) => {
           </SortableItem>
         ))}
       </SortableContext>
-    </div>
-  );
-};
-
-const SortableItem = ({ id, children }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
-  const style = {
-    transform: CSS.Transform.toString(transform),
-    transition,
-  };
-
-  return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
-      {children}
     </div>
   );
 };
