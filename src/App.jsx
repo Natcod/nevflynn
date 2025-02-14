@@ -87,10 +87,13 @@ function App() {
     <DarkModeProvider>
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
         <Navigation />
-        <ProfileCards cards={cards.ProfileCards} />
+        <div className="container ">
+        <ProfileCards cards={cards.ProfileCards} className="card" />
         <ProjectsSection cards={cards.ProjectsSection} />
         <MediaSection cards={cards.MediaSection} />
         <NightModeSection />
+        </div>
+        
       </DndContext>
     </DarkModeProvider>
   );
