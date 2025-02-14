@@ -80,3 +80,38 @@
 .avatar-card p {
   margin: 8px 0;
 }
+
+.avatar-card {
+  width: 576px;
+  height: 279.98px;
+  padding: 36px 42px 42px 36px;
+  box-sizing: border-box;
+  position: relative;
+  background-color: #fff; /* Adjust based on theme */
+}
+
+.avatar-card .toggle-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 170.18px;
+  height: 36px;
+  padding: 0 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.avatar-card img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.avatar-card p {
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}

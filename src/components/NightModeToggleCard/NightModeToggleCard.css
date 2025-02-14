@@ -33,3 +33,21 @@
   .toggle-buttonN:hover {
     background-color: #0056b3;
   }
+  .nightmode-section {
+    width: 1200px;
+    height: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nightmode-card {
+    width: 279.98px;
+    height: 279.98px;
+    background-color: #fff; /* Adjust based on theme */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+  }

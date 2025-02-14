@@ -41,3 +41,25 @@
 .zoom-button:hover {
   background-color: #0056b3; /* Darker blue on hover */
 }
+.map-card {
+  width: 279.98px;
+  height: 279.98px;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-card .map-container {
+  width: 100%;
+  height: 100%;
+}
+
+.map-card .share-button {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}

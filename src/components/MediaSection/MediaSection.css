@@ -14,3 +14,36 @@
       flex-direction: column;
     }
   }
+  .media-card {
+    width: 279.98px;
+    height: 279.98px;
+    padding: 32px 38px 38px 32px;
+    box-sizing: border-box;
+    background-color: #fff; /* Adjust based on theme */
+  }
+  
+  .media-card .spotify-logo {
+    width: 54px;
+    height: 54px;
+  }
+  
+  .media-card .content {
+    margin-top: 16px;
+  }
+  
+  .media-card .frequency {
+    width: 204px;
+    height: 24px;
+    background-color: #ccc;
+  }
+  
+  .media-card .title {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .media-card .text {
+    margin-top: 4px;
+    font-size: 14px;
+  }
