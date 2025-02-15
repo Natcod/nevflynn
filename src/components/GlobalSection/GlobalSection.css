@@ -1,0 +1,28 @@
+.global-section {
+    margin-top: 20px; /* Add space between MediaSection and GlobalSection */
+    padding: 10px; /* Add internal padding for better appearance */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column; /* Stack items vertically */
+    background-color: var(--background-color); /* Use dark mode-aware background */
+    color: var(--text-color); /* Use dark mode-aware text color */
+    border-top: 1px solid #ccc; /* Optional: Add a visual separator */
+  }
+  
+  .night-mode-toggle-card {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: grab;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .toggle-buttonN {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: inherit;
+  }
