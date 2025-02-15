@@ -16,15 +16,16 @@ import './App.css';
 
 function App() {
   const [cards, setCards] = useState([
-    { id: 'avatar-1', type: 'AvatarCard' },
-    { id: 'map-1', type: 'MapCard' },
-    { id: 'twitter-1', type: 'TwitterCard' },
+    { id: 'avatar-1', type: 'AvatarCard', section: 'about' },
+    { id: 'map-1', type: 'MapCard', section: 'about' },
+    { id: 'twitter-1', type: 'TwitterCard', section: 'about' },
     {
       id: 'project-1',
       type: 'ProjectCard',
       image: '/public/project1.png',
       link: 'https://example.com/project1',
       isHorizontal: true,
+      section: 'projects',
     },
     {
       id: 'project-2',
@@ -32,6 +33,7 @@ function App() {
       image: '/public/project2.png',
       link: 'https://example.com/project2',
       isHorizontal: false,
+      section: 'projects',
     },
     {
       id: 'project-3',
@@ -39,12 +41,15 @@ function App() {
       image: '/public/project3.png',
       link: 'https://example.com/project3',
       isHorizontal: false,
+      section: 'projects',
     },
-    { id: 'spotify-1', type: 'SpotifyCard' },
-    { id: 'subscribe-1', type: 'SubscribeCard' },
-    { id: 'readmore-1', type: 'ReadMoreCard' },
-    { id: 'nightmode-1', type: 'NightModeToggleCard' },
+    { id: 'spotify-1', type: 'SpotifyCard', section: 'media' },
+    { id: 'subscribe-1', type: 'SubscribeCard', section: 'media' },
+    { id: 'readmore-1', type: 'ReadMoreCard', section: 'media' },
+    { id: 'nightmode-1', type: 'NightModeToggleCard', section: 'all' },
   ]);
+
+  const [activeSection, setActiveSection] = useState('all'); // Default to "all"
 
   const cardTypeToComponent = {
     AvatarCard: AvatarCard,
@@ -61,6 +66,7 @@ function App() {
     if (!over) return;
     const activeId = active.id;
     const overId = over.id;
+
     if (activeId !== overId) {
       setCards((prevCards) => {
         const oldIndex = prevCards.findIndex((card) => card.id === activeId);
@@ -71,20 +77,32 @@ function App() {
         const updatedCards = Array.from(prevCards);
         const [removedCard] = updatedCards.splice(oldIndex, 1);
         updatedCards.splice(newIndex, 0, removedCard);
-
         return updatedCards;
       });
     }
   };
 
+  const filteredAndOrderedCards = () => {
+    if (activeSection === 'all') return cards;
+
+    return [
+      ...cards.filter((card) => card.section === activeSection),
+      ...cards.filter((card) => card.section !== activeSection),
+    ];
+  };
+
   return (
     <DarkModeProvider>
       <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
-        <Navigation />
+        <Navigation setActiveSection={setActiveSection} />
         <div className="dynamic-grid-container">
-          <SortableContext items={cards.map((card) => card.id)}>
-            {cards.map((card) => (
-              <SortableItem key={card.id} id={card.id}>
+          <SortableContext items={filteredAndOrderedCards().map((card) => card.id)}>
+            {filteredAndOrderedCards().map((card) => (
+              <SortableItem
+                key={card.id}
+                id={card.id}
+                isActive={card.section === activeSection || activeSection === 'all'}
+              >
                 {React.createElement(cardTypeToComponent[card.type], card)}
               </SortableItem>
             ))}
@@ -95,18 +113,26 @@ function App() {
   );
 }
 
-const SortableItem = ({ id, children }) => {
+const SortableItem = ({ id, children, isActive }) => {
   const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
   const style = {
     transform: transform ? CSS.Transform.toString(transform) : 'none',
-    transition,
+    transition: 'transform 0.3s ease, filter 0.3s ease', // Smooth transitions
     zIndex: transform ? 10 : undefined,
+    filter: isActive ? 'none' : 'blur(5px)', // Apply blur if not active
+    opacity: isActive ? 1 : 0.7, // Slightly reduce opacity for inactive cards
   };
+
   return (
-    <div ref={setNodeRef} style={style} {...attributes} {...listeners} className="grid-item">
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className={`grid-item ${isActive ? '' : 'blurred'}`}
+    >
       {children}
     </div>
   );
 };
-
 export default App;
