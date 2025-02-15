@@ -4,6 +4,7 @@ import { DarkModeContext } from '../DarkModeContext/DarkModeContext';
 
 const Navigation = ({ setActiveSection }) => {
   const { isDarkMode } = useContext(DarkModeContext);
+
   return (
     <nav className={`navigation ${isDarkMode ? 'dark-mode' : ''}`}>
       <button onClick={() => setActiveSection("all")}>All</button>
