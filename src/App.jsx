@@ -51,9 +51,11 @@ function App() {
 
   const [activeSection, setActiveSection] = useState('all'); // Default to "all"
 
+  const MemoizedMapCard = React.memo(MapCard);
+
   const cardTypeToComponent = {
     AvatarCard: AvatarCard,
-    MapCard: MapCard,
+    MapCard: MemoizedMapCard,
     TwitterCard: TwitterCard,
     ProjectCard: ProjectCard,
     SpotifyCard: SpotifyCard,
