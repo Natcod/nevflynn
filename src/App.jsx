@@ -3,6 +3,7 @@ import { DndContext, closestCenter } from '@dnd-kit/core';
 import { SortableContext, useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { DarkModeProvider } from './components/DarkModeContext/DarkModeContext';
+import { DragOverlay } from '@dnd-kit/core';
 import Navigation from './components/Navigation/Navigation';
 import AvatarCard from './components/ProfileCards/AvatarCard/AvatarCard';
 import MapCard from './components/ProfileCards/MapCard/MapCard';
@@ -50,6 +51,7 @@ function App() {
   ]);
 
   const [activeSection, setActiveSection] = useState('all'); // Default to "all"
+  const [activeCard, setActiveCard] = useState(null);
 
   const MemoizedMapCard = React.memo(MapCard);
 
@@ -64,7 +66,20 @@ function App() {
     NightModeToggleCard: NightModeToggleCard,
   };
 
+  const filteredAndOrderedCards = () => {
+    if (activeSection === 'all') return cards;
+    return [
+      ...cards.filter((card) => card.section === activeSection),
+      ...cards.filter((card) => card.section !== activeSection),
+    ];
+  };
+
+  const handleDragStart = ({ active }) => {
+    setActiveCard(cards.find((card) => card.id === active.id));
+  };
+
   const handleDragEnd = ({ active, over }) => {
+    setActiveCard(null);
     if (!over) return;
     const activeId = active.id;
     const overId = over.id;
@@ -84,18 +99,13 @@ function App() {
     }
   };
 
-  const filteredAndOrderedCards = () => {
-    if (activeSection === 'all') return cards;
-
-    return [
-      ...cards.filter((card) => card.section === activeSection),
-      ...cards.filter((card) => card.section !== activeSection),
-    ];
-  };
-
   return (
     <DarkModeProvider>
-      <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+      <DndContext 
+        collisionDetection={closestCenter} 
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+      >
         <Navigation setActiveSection={setActiveSection} />
         <div className="dynamic-grid-container">
           <SortableContext items={filteredAndOrderedCards().map((card) => card.id)}>
@@ -110,19 +120,33 @@ function App() {
             ))}
           </SortableContext>
         </div>
+
+        {/* Drag Overlay */}
+        <DragOverlay>
+          {activeCard ? React.createElement(cardTypeToComponent[activeCard.type], activeCard) : null}
+        </DragOverlay>
       </DndContext>
     </DarkModeProvider>
   );
 }
 
+
 const SortableItem = ({ id, children, isActive }) => {
-  const { attributes, listeners, setNodeRef, transform, transition } = useSortable({ id });
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({ id });
+
   const style = {
     transform: transform ? CSS.Transform.toString(transform) : 'none',
-    transition: 'transform 0.3s ease, filter 0.3s ease', // Smooth transitions
-    zIndex: transform ? 10 : undefined,
-    filter: isActive ? 'none' : 'blur(5px)', // Apply blur if not active
-    opacity: isActive ? 1 : 0.7, // Slightly reduce opacity for inactive cards
+    transition: 'transform 0.3s ease, filter 0.3s ease',
+    zIndex: isDragging ? 10 : undefined,
+    filter: isActive ? 'none' : 'blur(5px)',
+    opacity: isDragging ? 0.5 : isActive ? 1 : 0.7, 
   };
 
   return (
@@ -131,10 +155,25 @@ const SortableItem = ({ id, children, isActive }) => {
       style={style}
       {...attributes}
       {...listeners}
-      className={`grid-item ${isActive ? '' : 'blurred'}`}
+      className={`grid-item ${isDragging ? 'dragging' : ''}`}
     >
       {children}
+      {isDragging && (
+        <div
+          className="placeholder"
+          style={{
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.1)', // Light shadow effect
+            boxShadow: '0px 10px 20px rgba(0, 0, 0, 0.3)', // Shadow for placeholder
+            borderRadius: '8px', // Match card shape
+          }}
+        />
+      )}
     </div>
   );
 };
+
+
 export default App;

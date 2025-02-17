@@ -57,3 +57,11 @@ body, html {
     transform: translateY(0); /* Cards move to their final position */
   }
 }
+
+.placeholder {
+  width: 100%;
+  height: 100px; /* Adjust as needed */
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px dashed #ccc;
+  border-radius: 8px;
+}
