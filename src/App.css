@@ -65,3 +65,7 @@ body, html {
   border: 2px dashed #ccc;
   border-radius: 8px;
 }
+.dynamic-grid-container {
+  transform: scale(0.5); /* Scale down to 80% */
+  transform-origin: top center; /* Keep scaling centered */
+}
