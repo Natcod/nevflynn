@@ -23,7 +23,7 @@ function App() {
     {
       id: 'project-1',
       type: 'ProjectCard',
-      image: '/public/project1.png',
+      image: 'project1.png',
       link: 'https://example.com/project1',
       isHorizontal: true,
       section: 'projects',
@@ -31,7 +31,7 @@ function App() {
     {
       id: 'project-2',
       type: 'ProjectCard',
-      image: '/public/project2.png',
+      image: 'project2.png',
       link: 'https://example.com/project2',
       isHorizontal: false,
       section: 'projects',
@@ -39,7 +39,7 @@ function App() {
     {
       id: 'project-3',
       type: 'ProjectCard',
-      image: '/public/project3.png',
+      image: 'project3.png',
       link: 'https://example.com/project3',
       isHorizontal: false,
       section: 'projects',
